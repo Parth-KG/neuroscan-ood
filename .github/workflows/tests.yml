@@ -18,9 +18,9 @@ jobs:
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
           pip install -e .
+          pip install ruff pytest
       - name: Lint
         run: |
-          pip install ruff
           ruff check src scripts tests
           ruff format --check src scripts tests
       - name: Run tests
