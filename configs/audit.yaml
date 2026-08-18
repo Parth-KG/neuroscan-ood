@@ -1,0 +1,3 @@
+# Source-independence audit (M2). A SARTAJ image whose closest Figshare image is within this
+# many bits (out of 64) is treated as a cross-source near-duplicate.
+hamming_threshold: 5

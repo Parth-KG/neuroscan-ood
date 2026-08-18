@@ -1,0 +1,12 @@
+split,seed,accuracy
+random,0,0.954098
+random,1,0.965574
+random,2,0.965574
+grouped,0,0.896499
+grouped,1,0.873990
+grouped,2,0.950427
+
+split,mean,stdev
+random,0.961749,0.005410
+grouped,0.906972,0.032072
+gap_random_minus_grouped,0.054776,

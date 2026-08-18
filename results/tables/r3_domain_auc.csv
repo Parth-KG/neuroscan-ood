@@ -1,0 +1,8 @@
+corruption,auc
+brightness,1.0000
+contrast,1.0000
+gaussian_noise,1.0000
+blur,0.9978
+downsample,0.9956
+bias_field,0.7384
+pooled,0.9179

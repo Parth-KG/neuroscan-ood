@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it."
+title: "Auditing a brain-tumour MRI classifier: leakage, domain shift, and reliability"
+authors:
+  - family-names: Goswami
+    given-names: Parth Krishan
+    email: parthkrishangoswami@gmail.com
+date-released: 2026-08-18
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/Parth-KG/neuroscan-ood"

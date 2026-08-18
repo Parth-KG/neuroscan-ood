@@ -1,0 +1,17 @@
+seed: 0            # overridden per run by --seeds
+source: figshare
+split: grouped     # overridden per run (random / grouped)
+classes: [meningioma, glioma, pituitary]
+model:
+  name: efficientnet_b0
+  pretrained: true
+train:
+  epochs: 5
+  batch_size: 32
+  lr: 0.0003
+  image_size: 224
+  num_workers: 2
+transforms:
+  train: [resize, hflip, normalize]
+  eval: [resize, normalize]
+run_id: r1        # overridden per run

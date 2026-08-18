@@ -1,0 +1,7 @@
+corruption,baseline,A_matched,A_equalize,B_adabn
+brightness,0.6910,0.8630,0.3714,0.8995
+contrast,0.8691,0.8935,0.3820,0.8858
+gaussian_noise,0.5251,0.5251,0.2451,0.8584
+blur,0.8828,0.8721,0.2785,0.8980
+downsample,0.8798,0.8676,0.2907,0.8965
+bias_field,0.8919,0.8919,0.4003,0.8950
