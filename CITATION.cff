@@ -1,6 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite it."
+type: software
 title: "Auditing a brain-tumour MRI classifier: leakage, domain shift, and reliability"
+abstract: >-
+  A reproducible audit of a three-class brain-tumour MRI classifier (EfficientNet-B0):
+  quantifying accuracy inflation from patient-level data leakage, auditing dataset
+  independence, measuring robustness under controlled acquisition shift, diagnosing the
+  failure, and testing label-free mitigations and uncertainty methods.
 authors:
   - family-names: Goswami
     given-names: Parth Krishan

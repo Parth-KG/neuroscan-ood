@@ -60,8 +60,8 @@ Full numbers are in [RESULTS.md](RESULTS.md); the method is in [docs/METHODS.md]
 
 ## Data
 
-I use the Figshare brain-tumour dataset by Jun Cheng (3,064 T1-weighted contrast-enhanced slices
-from 233 patients, DOI 10.6084/m9.figshare.1512427). The SARTAJ Kaggle dataset is used only for the
+I use the [Figshare brain-tumour dataset by Jun Cheng](https://figshare.com/articles/dataset/brain_tumor_dataset/1512427) (3,064 T1-weighted contrast-enhanced slices
+from 233 patients, DOI 10.6084/m9.figshare.1512427). The [SARTAJ Kaggle dataset](https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri) is used only for the
 independence audit. Neither dataset is redistributed here; see the setup section for where to place
 the files. Labels use the canonical encoding meningioma = 0, glioma = 1, pituitary = 2.
 
@@ -105,7 +105,7 @@ python scripts/run_r4.py       --config configs/r1.yaml --severity 3    # mitiga
 python scripts/run_r5.py       --config configs/r1.yaml --severity 3    # uncertainty
 ```
 
-Runs are reproducible: seeds are fixed and re-running a configuration reproduces the metrics.
+Runs are reproducible: seeds are fixed, so re-running a configuration reproduces the metrics exactly on CPU and gives near-identical results on GPU; the numbers in this repo were produced with the released code.
 `pytest` covers the core invariants (grouped splits share no patient, the manifest counts are
 correct, the metrics and corruptions are deterministic, and AdaBN changes only the batch-norm
 statistics).
