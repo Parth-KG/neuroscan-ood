@@ -5,14 +5,14 @@ split, seed 0 unless noted).
 
 ## R1 — Patient-level leakage
 
-| Split | Test accuracy |
-|---|---|
-| Random (leaky) | 96.2% ± 0.5 |
-| Patient-grouped (honest) | 90.7% ± 3.2 |
+Over 10 seeds:
 
-Switching to the honest split costs **5.5 points**, consistently across three seeds. The random
-split is very stable (± 0.5) while the honest split varies more (± 3.2), because once patients
-cannot leak, the score genuinely depends on which patients land in the test set.
+| Split | Mean accuracy | 95% CI |
+|---|---|---|
+| Random (leaky) | 96.0% | [95.6, 96.4] |
+| Patient-grouped (honest) | 90.2% | [88.1, 92.3] |
+
+The leakage gap is **5.8 points** (95% CI [3.9, 7.7]), and a paired t-test across the ten seeds gives **t = 6.78, p < 0.001**, so the inflation is statistically significant and not an artifact of a lucky split; all ten seeds show it. The honest split also varies more (±2.9 vs ±0.6): once patients cannot leak, the score genuinely depends on which patients land in the test set.
 
 ![R1](results/figures/r1_leakage.png)
 

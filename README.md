@@ -16,7 +16,7 @@ My earlier project, [NeuroScan-AI](https://github.com/Parth-KG/NeuroScan-AI), re
 
 ## Key findings
 
-- **Patient leakage inflates accuracy.** With a random slice-level split, slices from the same patient leak across train and test and accuracy reads **96.2% ± 0.5**. With a patient-grouped split, it falls to **90.7% ± 3.2**, a **5.5-point** gap attributable to leakage alone. On the risks of this kind of leakage, see Zech et al. (2018) and Kapoor and Narayanan (2023).
+- **Patient leakage inflates accuracy.** With a random slice-level split, slices from the same patient leak across train and test and accuracy reads **96.0%** (95% CI [95.6, 96.4]). With a patient-grouped split it falls to **90.2%** (95% CI [88.1, 92.3]), a **5.8-point** gap (95% CI [3.9, 7.7]; paired t-test p < 0.001 over 10 seeds). On the risks of this kind of leakage, see Zech et al. (2018) and Kapoor and Narayanan (2023).
 
   ![Leakage: random vs patient-grouped accuracy](results/figures/r1_leakage.png)
 

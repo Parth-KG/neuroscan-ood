@@ -20,6 +20,24 @@ EfficientNet-B0 (timm), initialised from ImageNet weights, fine-tuned with Adam 
 Grayscale MRIs are replicated to three channels and resized. Checkpoints are written each epoch and
 training can resume from the latest.
 
+## Hyperparameters
+
+| Setting | Value |
+|---|---|
+| Backbone | EfficientNet-B0 (timm), ImageNet-pretrained |
+| Optimiser | Adam |
+| Learning rate | 3e-4 |
+| Epochs | 5 |
+| Batch size | 32 |
+| Image size | 224 x 224 |
+| Channels | grayscale replicated to 3 |
+| Normalisation | ImageNet mean/std |
+| Train augmentation | resize, random horizontal flip |
+| Test transform | resize, normalise |
+| Split | patient-grouped or random, test fraction 0.2 |
+| Seeds | 0-9 for R1, 0 for R2-R5 |
+| Loss | cross-entropy |
+
 ## Experiments
 
 - **R1, leakage.** Train under each split strategy across three seeds and compare test accuracy.
@@ -43,3 +61,7 @@ training can resume from the latest.
 
 Expected Calibration Error is computed with a fixed number of bins throughout, so calibration
 numbers are comparable across experiments.
+
+## Reproducibility
+
+The Figshare set has 3,064 slices from 233 patients. Fifteen slices documented as corrupt are excluded (indices 954-956, 1069-1075, and 1202-1206), leaving 3,049 usable slices across all 233 patients. `prepare_data.py` asserts these counts (3,064 slices read and 233 unique patient IDs) and fails loudly if they do not hold, so a mismatched dataset version is caught immediately.
