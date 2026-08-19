@@ -1,6 +1,6 @@
 # Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![CI](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22009395.svg)](https://doi.org/10.5281/zenodo.22009395)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![CI](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/1338787540.svg)](https://doi.org/10.5281/zenodo.22009395)
 
 ## Abstract
 
