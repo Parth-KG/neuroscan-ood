@@ -1,4 +1,4 @@
-name: tests
+name: CI
 
 on:
   push:
@@ -18,10 +18,12 @@ jobs:
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
           pip install -e .
-          pip install ruff pytest
+          pip install ruff pytest mypy
       - name: Lint
         run: |
           ruff check src scripts tests
           ruff format --check src scripts tests
+      - name: Type check
+        run: mypy src/neuroscan_ood
       - name: Run tests
         run: pytest -q

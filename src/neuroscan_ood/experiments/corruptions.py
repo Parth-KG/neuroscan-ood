@@ -39,9 +39,9 @@ def downsample(a: np.ndarray, s: int) -> np.ndarray:
     scale = [0.75, 0.60, 0.50, 0.40, 0.30][s - 1]
     h, w = a.shape
     small = Image.fromarray(a).resize(
-        (max(1, int(w * scale)), max(1, int(h * scale))), Image.BILINEAR
+        (max(1, int(w * scale)), max(1, int(h * scale))), Image.Resampling.BILINEAR
     )
-    return np.array(small.resize((w, h), Image.BILINEAR))
+    return np.array(small.resize((w, h), Image.Resampling.BILINEAR))
 
 
 def bias_field(a: np.ndarray, s: int) -> np.ndarray:

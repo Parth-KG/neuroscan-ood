@@ -132,7 +132,8 @@ def main(raw_root: Path, out_root: Path, expect_figshare_counts: bool = True) ->
     raw_root, out_root = Path(raw_root), Path(out_root)
     images_out = out_root / "images"
     images_out.mkdir(parents=True, exist_ok=True)
-    rows, excluded = [], []
+    rows: list[dict] = []
+    excluded: list[list] = []
     prepare_figshare(raw_root / "figshare", images_out, rows, excluded)
     prepare_sartaj(raw_root / "sartaj", images_out, rows, excluded)
 
@@ -153,9 +154,9 @@ def main(raw_root: Path, out_root: Path, expect_figshare_counts: bool = True) ->
         w.writeheader()
         w.writerows(rows)
     with open(out_root / "excluded.csv", "w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["raw_path", "source", "reason"])
-        w.writerows(excluded)
+        ew = csv.writer(f)
+        ew.writerow(["raw_path", "source", "reason"])
+        ew.writerows(excluded)
 
     fig_rows = [r for r in rows if r["source"] == "figshare"]
     fig_excl = [e for e in excluded if e[1] == "figshare"]

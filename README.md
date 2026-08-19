@@ -1,6 +1,6 @@
 # Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![tests](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22009395.svg)](https://doi.org/10.5281/zenodo.22009395)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![CI](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22009395.svg)](https://doi.org/10.5281/zenodo.22009395)
 
 ## Abstract
 
@@ -86,6 +86,14 @@ $NEUROSCAN_ROOT/data/raw/sartaj/{Training,Testing}/<class>/*.jpg   # only needed
 ```
 
 ## Reproducing the experiments
+
+First fetch the data (Figshare downloads automatically; SARTAJ needs a Kaggle account):
+
+```
+python scripts/download_data.py --out-root $NEUROSCAN_ROOT/data/raw
+```
+
+Then prepare and run the experiments:
 
 ```
 python scripts/prepare_data.py --raw-root $NEUROSCAN_ROOT/data/raw --out-root $NEUROSCAN_ROOT/data/prepared

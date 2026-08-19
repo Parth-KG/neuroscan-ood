@@ -24,3 +24,8 @@ ignore = ["E501"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["neuroscan_ood"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = false
