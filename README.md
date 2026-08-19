@@ -1,6 +1,6 @@
 # Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![tests](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![tests](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/tests.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22009395.svg)](https://doi.org/10.5281/zenodo.22009395)
 
 ## Abstract
 
@@ -121,7 +121,7 @@ The corruption study is a controlled, synthetic stress test, chosen precisely be
 
 If you refer to this work, please cite it (see `CITATION.cff`, or use GitHub's "Cite this repository" button):
 
-> Goswami, P. K. (2026). *Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability.* https://github.com/Parth-KG/neuroscan-ood
+> Goswami, P. K. (2026). *Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability.* Zenodo. https://doi.org/10.5281/zenodo.22009395
 
 ## Contact
 
