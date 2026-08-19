@@ -6,6 +6,10 @@
 
 Brain-tumour MRI classifiers on the popular public benchmarks routinely report accuracies in the mid-to-high 90s, including my own earlier project (NeuroScan-AI, 95.39% on a four-class combined dataset with a folder-based split). This repository asks how much of such a number survives an honest evaluation. Using the source Figshare dataset (three tumour types, 3,064 slices from 233 patients) and the SARTAJ dataset, I show that two standard practices inflate accuracy: non-patient-grouped train/test splits (worth about 5.5 points here) and treating Figshare and SARTAJ as independent sources when roughly 85% of their tumour images are duplicates. I then characterise the model's fragility under controlled, ImageNet-C-style corruptions, trace it to an over-reliance on pixel intensity, and show that a label-free adaptation (AdaBN) plus temperature-scaled selective prediction recover most of the lost accuracy and calibration. Every experiment is seeded and reproducible.
 
+![Summary cascade](results/figures/cascade.png)
+
+*Figure 1. The reported accuracy deflates as evaluation gets more honest and then stressed: from a leaky split (96.0%) to a patient-grouped split (90.2%) to a mean of 66.4% under corruption and 38.5% under noise. Figures are for the Figshare three-class task.*
+
 ## Contribution
 
 The techniques used here are standard; the contribution is the audit. Concretely: (1) a reproducible measurement of how much patient-level leakage inflates accuracy on this benchmark, and (2) evidence that the two datasets commonly cross-used for "external validation" of brain-tumour classifiers, Figshare and SARTAJ, are largely the same images, which makes that validation practice invalid. The robustness, diagnosis, and mitigation sections then show the practical consequences and some cheap, label-free remedies.
@@ -20,23 +24,33 @@ My earlier project, [NeuroScan-AI](https://github.com/Parth-KG/NeuroScan-AI), re
 
   ![Leakage: random vs patient-grouped accuracy](results/figures/r1_leakage.png)
 
+  *Figure 2. Test accuracy under a random (leaky) split versus a patient-grouped (honest) split, over 10 seeds; bars are means, error bars standard deviation.*
+
 - **The two "independent" datasets are not independent.** A perceptual-hash audit finds **2,335** SARTAJ tumour images within a tiny Hamming distance of a Figshare image, many of them exact duplicates. Any evaluation that trains on one and tests on the other, or mixes them as the combined dataset does, is leaking. (The combined dataset's author himself replaced SARTAJ's glioma images with Figshare images, folding the two together.)
 
 - **The model is fragile under controlled corruptions.** Under an ImageNet-C-style stress test (Hendrycks and Dietterich, 2019) of brightness, contrast, Gaussian noise, blur, downsampling, and an MRI bias field applied to the held-out scans, mean accuracy falls from **89.6%** to about **66%**, and to **38.5%** under noise, while confidence stays high. This is a controlled stress test, not a measured inter-site shift (see Limitations).
 
   ![Accuracy under controlled corruptions](results/figures/r2_acquisition_shift.png)
 
+  *Figure 3. Accuracy of the honest model as each corruption's severity increases (0 = clean); the black line is the mean across corruptions.*
+
 - **The failure is diagnosable.** A linear probe separates clean from corrupted scans almost perfectly in feature space (pooled AUC **0.92**), and Grad-CAM (Selvaraju et al., 2017) shows attention sliding off the tumour. The cause is over-reliance on absolute pixel intensity.
 
   ![Clean vs corrupted separability](results/figures/r3_domain_auc.png)
+
+  *Figure 4. AUC of a linear probe separating clean from corrupted scans in feature space; near 1.0 means the shift is trivially visible inside the model.*
 
 - **Cheap, label-free fixes recover most of the loss.** Re-estimating BatchNorm statistics on the corrupted scans (AdaBN; Li et al., 2016) lifts accuracy from **79.0%** to **88.9%** and improves calibration, with no labels and no retraining; a training-matched intensity normalisation helps too, while a mismatched one (histogram equalisation) hurts.
 
   ![Mitigations vs baseline](results/figures/r4_mitigations.png)
 
+  *Figure 5. Accuracy under each corruption for the baseline and three label-free mitigations; AdaBN recovers the most.*
+
 - **Uncertainty can be made honest.** Temperature scaling (Guo et al., 2017) cuts calibration error under corruption from **0.154 to 0.044**, and referring the least-confident 20% of scans to a human (selective prediction; Geifman and El-Yaniv, 2017) raises accuracy on the rest from **79.3% to 88.5%**.
 
   ![Referral: accuracy vs coverage](results/figures/r5_referral.png)
+
+  *Figure 6. Accuracy versus coverage when the least-confident scans are referred to a human; referring 20% raises accuracy on the rest to 88.5%.*
 
 Full numbers are in [RESULTS.md](RESULTS.md); the method is in [docs/METHODS.md](docs/METHODS.md).
 
