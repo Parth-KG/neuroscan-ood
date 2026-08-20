@@ -1,18 +1,17 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite it."
+message: "If you use this software, please cite it as below."
+title: "neuroscan-ood: auditing a brain-tumour MRI classifier for leakage, robustness and calibration"
 type: software
-title: "Auditing a brain-tumour MRI classifier: leakage, domain shift, and reliability"
-abstract: >-
-  A reproducible audit of a three-class brain-tumour MRI classifier (EfficientNet-B0):
-  quantifying accuracy inflation from patient-level data leakage, auditing dataset
-  independence, measuring robustness under controlled acquisition shift, diagnosing the
-  failure, and testing label-free mitigations and uncertainty methods.
 authors:
   - family-names: Goswami
     given-names: Parth Krishan
-    email: parthkrishangoswami@gmail.com
-date-released: 2026-08-18
-version: "1.0.0"
-doi: "10.5281/zenodo.22009395"
-license: MIT
+    orcid: "https://orcid.org/0009-0004-8674-6002"
 repository-code: "https://github.com/Parth-KG/neuroscan-ood"
+license: MIT
+date-released: 2026-08-19
+keywords:
+  - medical-imaging
+  - data-leakage
+  - distribution-shift
+  - calibration
+  - reproducibility
