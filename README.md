@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Brain-tumour MRI classifiers on the popular public benchmarks routinely report accuracies in the mid-to-high 90s, including my own earlier project (NeuroScan-AI, 95.39% on a four-class combined dataset with a folder-based split). This repository asks how much of such a number survives an honest evaluation. Using the source Figshare dataset (three tumour types, 3,064 slices from 233 patients) and the SARTAJ dataset, I show that two standard practices inflate accuracy: non-patient-grouped train/test splits (worth about 5.5 points here) and treating Figshare and SARTAJ as independent sources when roughly 85% of their tumour images are duplicates. I then characterise the model's fragility under controlled, ImageNet-C-style corruptions, trace it to an over-reliance on pixel intensity, and show that a label-free adaptation (AdaBN) plus temperature-scaled selective prediction recover most of the lost accuracy and calibration. Every experiment is seeded and reproducible.
+Brain-tumour MRI classifiers on the popular public benchmarks routinely report accuracies in the mid-to-high 90s, including my own earlier project (NeuroScan-AI, 95.19% on a four-class combined dataset with a folder-based split). This repository asks how much of such a number survives an honest evaluation. Using the source Figshare dataset (three tumour types, 3,064 slices from 233 patients) and the SARTAJ dataset, I show that two standard practices inflate accuracy: non-patient-grouped train/test splits (worth about 5.5 points here) and treating Figshare and SARTAJ as independent sources when roughly 85% of their tumour images are duplicates. I then characterise the model's fragility under controlled, ImageNet-C-style corruptions, trace it to an over-reliance on pixel intensity, and show that a label-free adaptation (AdaBN) plus temperature-scaled selective prediction recover most of the lost accuracy and calibration. Every experiment is seeded and reproducible.
 
 ![Summary cascade](results/figures/cascade.png)
 
@@ -16,7 +16,7 @@ The techniques used here are standard; the contribution is the audit. Concretely
 
 ## Background
 
-My earlier project, [NeuroScan-AI](https://github.com/Parth-KG/NeuroScan-AI), reported 95.39% test accuracy on the [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) by Nickparvar, a four-class (glioma, meningioma, pituitary, no-tumour) combination of Figshare, SARTAJ, and Br35H evaluated with a plain folder-based train/test split. That result motivated this audit. Rather than re-scoring the combined set, I go to its source datasets, where leakage and cross-source duplication can be measured directly, and where the findings explain why folder-split accuracies on the combined dataset (mine, and many published ones) are optimistic.
+My earlier project, [NeuroScan-AI](https://github.com/Parth-KG/NeuroScan-AI), reported 95.19% test accuracy on the [Brain Tumor MRI Dataset](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset) by Nickparvar, a four-class (glioma, meningioma, pituitary, no-tumour) combination of Figshare, SARTAJ, and Br35H evaluated with a plain folder-based train/test split. That result motivated this audit. Rather than re-scoring the combined set, I go to its source datasets, where leakage and cross-source duplication can be measured directly, and where the findings explain why folder-split accuracies on the combined dataset (mine, and many published ones) are optimistic.
 
 ## Key findings
 
