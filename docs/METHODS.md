@@ -40,7 +40,7 @@ training can resume from the latest.
 
 ## Experiments
 
-- **R1, leakage.** Train under each split strategy across three seeds and compare test accuracy.
+- **R1, leakage.** Train under each split strategy across 10 seeds (0 to 9) and compare test accuracy.
 - **Audit.** Perceptual-hash (pHash) every prepared image and, for each SARTAJ image, find its
   smallest Hamming distance to any Figshare image. Any pair within a small threshold is a
   cross-source near-duplicate; a single such pair fails the independence check.
