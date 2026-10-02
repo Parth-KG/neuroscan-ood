@@ -20,7 +20,7 @@ audit:
 	python scripts/audit_sources.py --config configs/audit.yaml
 
 r1:
-	python scripts/run_r1.py --config configs/r1.yaml --seeds 0 1 2
+	python scripts/run_r1.py --config configs/r1.yaml --seeds 0 1 2 3 4 5 6 7 8 9
 
 r2:
 	python scripts/run_r2.py --config configs/r1.yaml
@@ -33,4 +33,3 @@ r4:
 
 r5:
 	python scripts/run_r5.py --config configs/r1.yaml --severity 3
-
