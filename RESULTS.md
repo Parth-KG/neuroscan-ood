@@ -88,6 +88,6 @@ Temperature scaling (temperature fit on clean logits, applied to shifted scans):
 | After | 0.044 |
 
 Referral (referring the least-confident scans to a human): keeping all shifted scans gives **79.3%**
-accuracy; keeping the 80% most confident raises it to **88.5%**.
+accuracy; keeping the 80% most confident raises it to **87.7%**.
 
 ![R5](results/figures/r5_referral.png)
