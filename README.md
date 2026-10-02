@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Brain-tumour MRI classifiers on the popular public benchmarks routinely report accuracies in the mid-to-high 90s, including my own earlier project (NeuroScan-AI, 95.19% on a four-class combined dataset with a folder-based split). This repository asks how much of such a number survives an honest evaluation. Using the source Figshare dataset (three tumour types, 3,064 slices from 233 patients) and the SARTAJ dataset, I show that two standard practices inflate accuracy: non-patient-grouped train/test splits (worth about 5.5 points here) and treating Figshare and SARTAJ as independent sources when roughly 85% of their tumour images are duplicates. I then characterise the model's fragility under controlled, ImageNet-C-style corruptions, trace it to an over-reliance on pixel intensity, and show that a label-free adaptation (AdaBN) plus temperature-scaled selective prediction recover most of the lost accuracy and calibration. Every experiment is seeded and reproducible.
+Brain-tumour MRI classifiers on the popular public benchmarks routinely report accuracies in the mid-to-high 90s, including my own earlier project (NeuroScan-AI, 95.19% on a four-class combined dataset with a folder-based split). This repository asks how much of such a number survives an honest evaluation. Using the source Figshare dataset (three tumour types, 3,064 slices from 233 patients) and the SARTAJ dataset, I show that two standard practices inflate accuracy: non-patient-grouped train/test splits (worth 5.8 points here) and treating Figshare and SARTAJ as independent sources when roughly 85% of their tumour images are duplicates. I then characterise the model's fragility under controlled, ImageNet-C-style corruptions, trace it to an over-reliance on pixel intensity, and show that a label-free adaptation (AdaBN) plus temperature-scaled selective prediction recover most of the lost accuracy and calibration. Every experiment is seeded and reproducible.
 
 ![Summary cascade](results/figures/cascade.png)
 
@@ -46,11 +46,11 @@ My earlier project, [NeuroScan-AI](https://github.com/Parth-KG/NeuroScan-AI), re
 
   *Figure 5. Accuracy under each corruption for the baseline and three label-free mitigations; AdaBN recovers the most.*
 
-- **Uncertainty can be made honest.** Temperature scaling (Guo et al., 2017) cuts calibration error under corruption from **0.154 to 0.044**, and referring the least-confident 20% of scans to a human (selective prediction; Geifman and El-Yaniv, 2017) raises accuracy on the rest from **79.3% to 88.5%**.
+- **Uncertainty can be made honest.** Temperature scaling (Guo et al., 2017) cuts calibration error under corruption from **0.154 to 0.044**, and referring the least-confident 20% of scans to a human (selective prediction; Geifman and El-Yaniv, 2017) raises accuracy on the rest from **79.3% to 87.7%**.
 
   ![Referral: accuracy vs coverage](results/figures/r5_referral.png)
 
-  *Figure 6. Accuracy versus coverage when the least-confident scans are referred to a human; referring 20% raises accuracy on the rest to 88.5%.*
+  *Figure 6. Accuracy versus coverage when the least-confident scans are referred to a human; referring 20% raises accuracy on the rest to 87.7%.*
 
 Full numbers are in [RESULTS.md](RESULTS.md); the method is in [docs/METHODS.md](docs/METHODS.md).
 
@@ -97,7 +97,7 @@ Then prepare and run the experiments:
 
 ```
 python scripts/prepare_data.py --raw-root $NEUROSCAN_ROOT/data/raw --out-root $NEUROSCAN_ROOT/data/prepared
-python scripts/run_r1.py       --config configs/r1.yaml --seeds 0 1 2   # leakage
+python scripts/run_r1.py       --config configs/r1.yaml --seeds 0 1 2 3 4 5 6 7 8 9   # leakage (10 seeds, as reported)
 python scripts/audit_sources.py --config configs/audit.yaml             # dataset independence
 python scripts/run_r2.py       --config configs/r1.yaml                 # corruptions
 python scripts/run_r3.py       --config configs/r1.yaml                 # diagnosis
@@ -109,7 +109,7 @@ Runs are reproducible: seeds are fixed, so re-running a configuration reproduces
 
 ## Limitations
 
-The corruption study is a controlled, synthetic stress test, chosen precisely because it cannot be contaminated the way SARTAJ is; it is not a measured shift between real scanners or sites, and a genuinely independent external cohort would strengthen the external-validity claim. This is also a source-dataset audit rather than a re-run of NeuroScan-AI's exact four-class, combined-dataset pipeline: the findings explain the failure modes present in that pipeline rather than re-scoring it. Finally, results are from a single architecture (EfficientNet-B0) over three seeds; the leakage and corruption effects are expected to be general, but the exact magnitudes are model-specific.
+The corruption study is a controlled, synthetic stress test, chosen precisely because it cannot be contaminated the way SARTAJ is; it is not a measured shift between real scanners or sites, and a genuinely independent external cohort would strengthen the external-validity claim. This is also a source-dataset audit rather than a re-run of NeuroScan-AI's exact four-class, combined-dataset pipeline: the findings explain the failure modes present in that pipeline rather than re-scoring it. Finally, results are from a single architecture (EfficientNet-B0), with the leakage comparison (R1) over 10 seeds and the corruption, mitigation and uncertainty experiments (R2 to R5) on a single seed; the leakage and corruption effects are expected to be general, but the exact magnitudes are model-specific.
 
 ## References
 
