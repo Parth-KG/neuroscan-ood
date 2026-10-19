@@ -50,7 +50,7 @@ def prepare_figshare(raw_dir: Path, images_out: Path, rows: list, excluded: list
     if not mat_files:
         log.warning("no .mat files under %s; skipping Figshare", raw_dir)
         return
-        for path in mat_files:
+    for path in mat_files:
         if not path.stem.isdigit():
             continue  # not a slice, e.g. cvind.mat (the dataset's cross-validation indices)
         idx = int(path.stem)
