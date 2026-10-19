@@ -88,6 +88,9 @@ Temperature scaling (temperature fit on clean logits, applied to shifted scans):
 | After | 0.044 |
 
 Referral (referring the least-confident scans to a human): keeping all shifted scans gives **79.3%**
-accuracy; keeping the 80% most confident raises it to **87.7%**.
+accuracy; keeping the 80% most confident raises it to **87.7%**. 
+R5 fits the temperature on half of the test patients and reports on the other half, so its
+no-referral baseline (79.3%, ECE 0.154) differs slightly from R4's mean over the full test set
+(79.0%, ECE 0.159).
 
 ![R5](results/figures/r5_referral.png)
