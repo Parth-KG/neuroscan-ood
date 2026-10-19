@@ -30,7 +30,7 @@ Accuracy at the strongest severity of each distortion (clean baseline 89.6%):
 | Distortion | Accuracy |
 |---|---|
 | Bias field | 89.3% |
-| Downsample | 82.9% |
+| Downsample | 83.0% |
 | Contrast | 71.5% |
 | Blur | 68.2% |
 | Brightness | 47.8% |
