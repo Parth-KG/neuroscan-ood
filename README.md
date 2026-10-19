@@ -1,6 +1,6 @@
 # Auditing a brain-tumour MRI classifier: leakage, robustness, and reliability
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml) [![CI](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/1338787540.svg)](https://doi.org/10.5281/zenodo.22009395)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml) [![CI](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml/badge.svg)](https://github.com/Parth-KG/neuroscan-ood/actions/workflows/ci.yml) [![DOI](https://zenodo.org/badge/1338787540.svg)](https://doi.org/10.5281/zenodo.22009395)
 
 ## Abstract
 
@@ -70,7 +70,7 @@ results/               my result figures and tables
 
 ## Setup
 
-Requires Python 3.10+ and a GPU for training. Install PyTorch for your platform first (on Colab/Kaggle it is preinstalled), then:
+Requires Python 3.11+ and a GPU for training. Install PyTorch for your platform first (on Colab/Kaggle it is preinstalled), then:
 
 ```
 pip install -r requirements.txt
