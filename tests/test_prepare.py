@@ -39,7 +39,6 @@ def test_excludes_known_bad_index(tmp_path):
     assert excluded and excluded[0][2] == "corrupt_known_index"
 
 
-
 def test_ignores_non_slice_mat_files(tmp_path):
     # The Figshare article also ships cvind.mat; download_data.py saves it beside the slices.
     raw = tmp_path / "figshare"
