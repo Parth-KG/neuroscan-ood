@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "neuroscan-ood: auditing a brain-tumour MRI classifier for leakage, robustness and calibration"
+title: "neuroscan-ood: auditing a brain-tumour MRI classifier for leakage, robustness and reliability"
 type: software
 authors:
   - family-names: Goswami
