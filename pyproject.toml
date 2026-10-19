@@ -7,7 +7,7 @@ name = "neuroscan-ood"
 version = "1.0.0"
 description = "Auditing a brain-tumour MRI classifier: leakage, domain shift, and reliability."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{ name = "Parth Krishan Goswami" }]
 license = { text = "MIT" }
 
