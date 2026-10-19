@@ -23,6 +23,10 @@ cross-source pairs fall within a Hamming distance of 5, and the closest distance
 duplicates). Verdict: **FAIL**. The two datasets are largely the same images, so SARTAJ cannot serve
 as an independent external test set.
 
+Every pair is listed in `results/tables/audit_near_duplicates.csv`.
+
+![Audit](results/figures/audit_distances.png)
+
 ## R2 — Controlled acquisition shift
 
 Accuracy at the strongest severity of each distortion (clean baseline 89.6%):
