@@ -50,8 +50,10 @@ def prepare_figshare(raw_dir: Path, images_out: Path, rows: list, excluded: list
     if not mat_files:
         log.warning("no .mat files under %s; skipping Figshare", raw_dir)
         return
-    for path in mat_files:
-        idx = int(path.stem) if path.stem.isdigit() else -1
+        for path in mat_files:
+        if not path.stem.isdigit():
+            continue  # not a slice, e.g. cvind.mat (the dataset's cross-validation indices)
+        idx = int(path.stem)
         if idx in KNOWN_BAD_FIGSHARE:
             excluded.append((str(path), "figshare", "corrupt_known_index"))
             continue
