@@ -1,10 +1,8 @@
-"""The single 16-bit -> 8-bit conversion rule.
+"""
+The single 16-bit -> 8-bit conversion rule.
 
-This conversion is itself an intensity normalisation. Per-image min-max scaling makes each
-image independently full-range, which removes part of the absolute-intensity difference
-between sources. That is a deliberate, fixed, documented convention here; the explicit
-intensity intervention for the study is arm A (histogram matching to the training source),
-not this function.
+This conversion is itself an intensity normalisation. Per-image min-max scaling makes each image independently full-range, which removes part of the absolute-intensity difference between sources. That is a deliberate, fixed, documented convention here; the explicit intensity interventions for the study are the R4 arms in experiments/mitigate.py (re-applying this rule after a corruption, or histogram equalisation), not this function.
+
 """
 
 import numpy as np
