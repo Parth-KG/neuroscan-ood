@@ -37,3 +37,18 @@ def test_excludes_known_bad_index(tmp_path):
     prepare_figshare(raw, out, rows, excluded)
     assert rows == []
     assert excluded and excluded[0][2] == "corrupt_known_index"
+
+
+
+def test_ignores_non_slice_mat_files(tmp_path):
+    # The Figshare article also ships cvind.mat; download_data.py saves it beside the slices.
+    raw = tmp_path / "figshare"
+    raw.mkdir()
+    out = tmp_path / "prepared" / "images"
+    out.mkdir(parents=True)
+    _write_mat(raw / "1.mat", np.random.randint(0, 4096, (64, 64)), 1, "P001")
+    (raw / "cvind.mat").write_bytes(b"MATLAB 5.0 MAT-file" + b"\0" * 100)
+    rows, excluded = [], []
+    prepare_figshare(raw, out, rows, excluded)
+    assert len(rows) == 1
+    assert excluded == []
